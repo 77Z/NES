@@ -1,0 +1,22 @@
+{
+  "name": "nes",
+  "version": "0.1.0",
+  "description": "NES",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/77Z/NES.git"
+  },
+  "author": "Vince Richter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/77Z/NES/issues"
+  },
+  "homepage": "https://github.com/77Z/NES#readme",
+  "dependencies": {
+    "electron": "^10.1.3"
+  }
+}

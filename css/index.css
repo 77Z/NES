@@ -1,0 +1,40 @@
+* {
+    font-family: sans-serif;
+    color: #fff;
+    user-select: none;
+    outline: none;
+}
+
+body,
+html {
+    overflow: hidden;
+}
+
+#out-canvas {
+    height: 700px;
+    width: 700px;
+}
+
+.controls {
+    position: fixed;
+    border: 2px solid #fff;
+    left: 715px;
+    top: 10px;
+    height: 690px;
+    width: 470px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    border: none;
+    padding: 3px 20px 3px 20px;
+    color: #000;
+    cursor: pointer;
+    background: #fff;
+}
