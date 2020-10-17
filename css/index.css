@@ -10,10 +10,10 @@ html {
     overflow: hidden;
 }
 
-#out-canvas {
+/* #out-canvas {
     height: 700px;
     width: 700px;
-}
+} */
 
 .controls {
     position: fixed;
@@ -37,4 +37,8 @@ button {
     color: #000;
     cursor: pointer;
     background: #fff;
+}
+
+input {
+    color: #000;
 }

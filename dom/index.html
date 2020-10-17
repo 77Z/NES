@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NES</title>
+    <title>VNES</title>
 
     <!-- FONTS -->
 
@@ -12,11 +12,16 @@
 
 </head>
 <body>
-    <canvas id="out-canvas"></canvas>
+    <canvas id="out-canvas" height="700" width="700"></canvas>
 
     <div class="controls">
         <h1>Controls</h1>
         <button id="opendevtoolsbtn">Open Dev Tools</button>
+        <button id="aboutbtn">About</button>
+        <br><br>
+        <button id="browseRoms">Browse</button>
+        <input type="text" autocomplete="off" spellcheck="false" id="romlocationinp">
+        <button id="runRomBtn">Run</button>
     </div>
 
 
