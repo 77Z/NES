@@ -6,13 +6,16 @@
     <title>VNES</title>
 
     <!-- FONTS -->
-
+    <link rel="stylesheet" href="../fonts/fonts.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/index.css">
 
+    <!-- Scripts -->
+    <script src="../node_modules/jsnes/dist/jsnes.min.js"></script>
+
 </head>
 <body>
-    <canvas id="out-canvas" height="700" width="700"></canvas>
+    <canvas id="out-canvas" height="240" width="256"></canvas>
 
     <div class="controls">
         <h1>Controls</h1>
@@ -22,6 +25,37 @@
         <button id="browseRoms">Browse</button>
         <input type="text" autocomplete="off" spellcheck="false" id="romlocationinp">
         <button id="runRomBtn">Run</button>
+        <br><br>
+        <button id="headlessbtn">Launch in headless mode</button>
+        <!-- <br>
+        <button id="screenshotbtn">Screenshot</button> -->
+
+        <br><br>
+        <h1>
+            Input Handler
+        </h1>
+        <select>
+            <option value="">Keyboard</option>
+            <option value="">XInput</option>
+            <option value="">GPIO Python Server</option>
+        </select>
+        <br><br>
+        <h1>
+            Audio Handler
+        </h1>
+        <select>
+            <option value="">Javascript Buffer</option>
+        </select>
+        <br><br>
+        <h1>
+            Graphics Handler
+        </h1>
+        <select>
+            <option value="">Canvas</option>
+            <option disabled value="">OpenGL</option>
+            <option disabled value="">Vulkan</option>
+        </select>
+
     </div>
 
 

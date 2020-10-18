@@ -44,6 +44,28 @@ function createWindow() {
         mainWindow = null;
     });
 
+    ipcMain.on("start-headless", () => {
+
+        let headlessMode = new BrowserWindow({
+            height: 800,
+            width: 800,
+            title: "VNES",
+            icon: "icon.png",
+            webPreferences: {
+                nodeIntegration: true
+            },
+            darkTheme: true,
+            fullscreen: true,
+            autoHideMenuBar: true
+        });
+        headlessMode.loadURL(`file://${__dirname}/dom/headless.html`);
+        headlessMode.on("close", function() {
+            mainWindow = null;
+        });
+
+        mainWindow.close();
+    });
+
     ipcMain.on("open-dev-tools", (e) => {
         mainWindow.webContents.openDevTools();
     });

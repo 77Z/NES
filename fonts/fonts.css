@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Montserrat";
+    font-weight: normal;
+    src: url("Montserrat-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: "Terminal";
+    font-weight: normal;
+    src: url("CascadiaCodePL-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Anton";
+    font-weight: normal;
+    src: url("Anton.ttf");
+}

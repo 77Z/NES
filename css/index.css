@@ -1,5 +1,5 @@
 * {
-    font-family: sans-serif;
+    font-family: "Montserrat";
     color: #fff;
     user-select: none;
     outline: none;
@@ -10,10 +10,11 @@ html {
     overflow: hidden;
 }
 
-/* #out-canvas {
+#out-canvas {
     height: 700px;
     width: 700px;
-} */
+    image-rendering: pixelated;
+}
 
 .controls {
     position: fixed;
@@ -39,6 +40,16 @@ button {
     background: #fff;
 }
 
-input {
+input[type=text] {
+    color: #000;
+    caret-color: #ff4500;
+}
+
+::selection {
+    background: #ff4500;
+}
+
+select,
+option {
     color: #000;
 }

@@ -21,48 +21,8 @@ var audio_samples_R = new Float32Array(SAMPLE_COUNT);
 var audio_write_cursor = 0,
     audio_read_cursor = 0;
 
-// Get Id's
-var outCanvas = document.getElementById("out-canvas");
-var opendevtoolsbtn = document.getElementById("opendevtoolsbtn");
-var aboutbtn = document.getElementById("aboutbtn");
-var romlocationinp = document.getElementById("romlocationinp");
-var browseRoms = document.getElementById("browseRoms");
-var runRomBtn = document.getElementById("runRomBtn");
-var headlessbtn = document.getElementById("headlessbtn");
-/* var screenshotButton = document.getElementById("screenshotbtn"); */
-
-//Window Load Events
-
-window.onload = function () {
-    if (localStorage.length !== 0) {
-        //Load recent rom into text box
-        var recentItem = localStorage.getItem("recentItem");
-        romlocationinp.value = recentItem;
-        recentItem = null;
-    }
-
-};
-
-// Body
-
+var outCanvas = document.getElementById("headless-canvas");
 var ctx = outCanvas.getContext("2d");
-
-opendevtoolsbtn.addEventListener("click", function () {
-    ipc.send("open-dev-tools");
-});
-
-aboutbtn.addEventListener("click", function () {
-    ipc.send("about");
-});
-
-browseRoms.addEventListener("click", function () {
-    ipc.send("browse-rom");
-});
-
-headlessbtn.addEventListener("click", function() {
-    ipc.send("start-headless");
-});
-
 
 var nes = new jsnes.NES({
     onFrame: function (framebuffer_24) {
@@ -139,38 +99,11 @@ function keyboard(callback, event) {
     }
 }
 
-runRomBtn.addEventListener("click", function () {
-    //Save the file location for easy
-    //access in the future
-    localStorage.setItem("recentItem", romlocationinp.value);
-
-    //THIS IS WHERE THE CHAIN STARTS !!!!
-
-    nes_load_file(romlocationinp.value);
-
-
-
-
-    /* nes = new jsnes.NES({
-        onFrame: function(frameBuffer) {
-            console.log(frameBuffer);
-        },
-        onAudioSample: function(left, right) {
-            //
-        }
-    });
-
-    var romData = fs.readFileSync(romlocationinp.value, { encoding: "binary" });
-
-    nes.loadROM(romData);
-
-
-    function frameTick() {
-        nes.frame();
-        requestAnimationFrame(frameTick);
-    }
-    requestAnimationFrame(frameTick); */
-});
+//Chain start
+window.onload = function() {
+    var romLocation = localStorage.getItem("recentItem");
+    nes_load_file(romLocation);
+};
 
 function nes_init() {
     image = ctx.getImageData(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -208,21 +141,3 @@ function nes_load_file(path) {
 
 document.addEventListener('keydown', (event) => {keyboard(nes.buttonDown, event)});
 document.addEventListener('keyup', (event) => {keyboard(nes.buttonUp, event)});
-
-/* screenshotButton.addEventListener("click", function() {
-    var img = new Image();
-    var date = new Date();
-    img.src = outCanvas.toDataURL("image/png");
-    fs.writeFile(`${__dirname}/screenshot${date.getDay()}${date.getHours()}${date.getMinutes()}${date.getMilliseconds()}.png`, img, (err) => {
-        if (err) throw err;
-    })
-}); */
-
-//IPC EVENTS
-
-ipc.on("main.browse-rom", (e, loc) => {
-    if (!null) {
-        console.log("setting value");
-        romlocationinp.value = loc;
-    }
-});
