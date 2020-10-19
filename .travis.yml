@@ -3,6 +3,5 @@ node_js:
   - "12"
 
 before_script:
-  - "npm run rebuild"
   - "rm ./linuxTests"
   - "g++ -o ./linuxTests ./tests/linux/main.cpp"
