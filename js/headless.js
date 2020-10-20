@@ -3,6 +3,8 @@
 // Requires
 const fs = require("fs");
 const ipc = require("electron").ipcRenderer;
+
+const WebSocket = require("ws");
 //require("jsnes");
 
 var SCREEN_WIDTH = 256;
@@ -103,6 +105,71 @@ function keyboard(callback, event) {
 window.onload = function() {
     var romLocation = localStorage.getItem("recentItem");
     nes_load_file(romLocation);
+
+
+    //WebSocket Server
+    const wss = new WebSocket.Server({ port: 2020 });
+    console.log("hosting server on port 2020");
+
+    wss.on("connection", function(ws) {
+        console.log("Client Connected");
+        ws.on("message", function incoming(data) {
+            switch(data) {
+                case "UP_START":
+                    nes.buttonDown(1, jsnes.Controller.BUTTON_UP);
+                    break;
+                case "RIGHT_START":
+                    nes.buttonDown(1, jsnes.Controller.BUTTON_RIGHT);
+                    break;
+                case "LEFT_START":
+                    nes.buttonDown(1, jsnes.Controller.BUTTON_LEFT);
+                    break;
+                case "DOWN_START":
+                    nes.buttonDown(1, jsnes.Controller.BUTTON_DOWN);
+                    break;
+                case "START_START":
+                    nes.buttonDown(1, jsnes.Controller.BUTTON_START);
+                    console.log("STORT");
+                    break;
+                case "SELECT_START":
+                    nes.buttonDown(1, jsnes.Controller.BUTTON_SELECT);
+                    break;
+                case "A_START":
+                    nes.buttonDown(1, jsnes.Controller.BUTTON_A);
+                    break;
+                case "B_START":
+                    nes.buttonDown(1, jsnes.Controller.BUTTON_B);
+                    break;
+                
+
+                //Endings
+                case "UP_END":
+                    nes.buttonUp(1, jsnes.Controller.BUTTON_UP);
+                    break;
+                case "RIGHT_END":
+                    nes.buttonUp(1, jsnes.Controller.BUTTON_RIGHT);
+                    break;
+                case "LEFT_END":
+                    nes.buttonUp(1, jsnes.Controller.BUTTON_LEFT);
+                    break;
+                case "DOWN_END":
+                    nes.buttonUp(1, jsnes.Controller.BUTTON_DOWN);
+                    break;
+                case "START_END":
+                    nes.buttonUp(1, jsnes.Controller.BUTTON_START);
+                    break;
+                case "SELECT_END":
+                    nes.buttonUp(1, jsnes.Controller.BUTTON_SELECT);
+                    break;
+                case "A_END":
+                    nes.buttonUp(1, jsnes.Controller.BUTTON_A);
+                    break;
+                case "B_END":
+                    nes.buttonUp(1, jsnes.Controller.BUTTON_B);
+                    break;
+            }
+        });
+    })
 };
 
 function nes_init() {
