@@ -1,2 +1,2 @@
 all:
-	g++ -Iinclude -Llib-vc2015 -lglfw3 -lopengl32 Source/main.cpp Source/vlib.cpp -o dist/out.exe
+	g++ -Iinclude -Llib-vc2015 -lglfw3 -lopengl32 -lgdi32 -luser32 -lkernel32 Source/main.cpp Source/vlib.cpp -o dist/out.exe
